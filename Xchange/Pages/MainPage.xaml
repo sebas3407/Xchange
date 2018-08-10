@@ -21,12 +21,11 @@
                 VerticalOptions="FillAndExpand"
                 Source="background.png"/>
 
-            <Label FontSize="20"
-                   HorizontalOptions="Center"
-                   Margin="20,40"
-                   Text="FOREIGN EXCHANGE"
-                   TextColor="White"
-                   VerticalOptions="Start"/>
+            <Image 
+                HorizontalOptions="FillAndExpand" 
+                Source="foreign_exchange.png" 
+                Margin="0,30,0,10" 
+                VerticalOptions="Start"/>
 
             <StackLayout VerticalOptions="Center">
                 
@@ -47,6 +46,18 @@
                          Margin="0,10"
                          WidthRequest="200"/>
 
+                <StackLayout HorizontalOptions="Center"
+                             Orientation="Horizontal"
+                             VerticalOptions="Center">
+                
+                    <Image Source="convert.png" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center"/>
+
+                    <Picker HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+
+                </StackLayout>
             </StackLayout>
         </Grid>
 

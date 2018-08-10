@@ -169,5 +169,11 @@
     <BundleResource Include="Resources\background.png" />
     <BundleResource Include="Resources\background%402x.png" />
     <BundleResource Include="Resources\background%403x.png" />
+    <BundleResource Include="Resources\convert.png" />
+    <BundleResource Include="Resources\convert%402x.png" />
+    <BundleResource Include="Resources\convert%403x.png" />
+    <BundleResource Include="Resources\foreign_exchange.png" />
+    <BundleResource Include="Resources\foreign_exchange%402x.png" />
+    <BundleResource Include="Resources\foreign_exchange%403x.png" />
   </ItemGroup>
 </Project>
