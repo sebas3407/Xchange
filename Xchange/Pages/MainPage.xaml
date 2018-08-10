@@ -33,12 +33,13 @@
                        FontAttributes="Bold"
                        FontSize="40"
                        HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
                        Keyboard="Numeric"
                        MaxLength="7"
                        Text="200"
                        TextColor="White"
                        VerticalOptions="Center"
-                       WidthRequest="100"/>
+                       WidthRequest="300"/>
 
                 <BoxView Color="White" 
                          HeightRequest="1" 
