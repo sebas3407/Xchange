@@ -14,8 +14,10 @@
     <Folder Include="Infrastructure\" />
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />
+    <Compile Remove="Controls\XEntry.cs" />
   </ItemGroup>
 </Project>
