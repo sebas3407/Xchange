@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Xchange"
-    x:Class="Xchange.Pages.HomePage">
+    x:Class="Xchange.Pages.HomePage"
+    BindingContext="{Binding Main.Home, Source={StaticResource Locator}}">
     
     <Grid>
         <Grid.RowDefinitions>
