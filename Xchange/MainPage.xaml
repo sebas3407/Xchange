@@ -10,7 +10,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-         <Grid 
+         <Grid Grid.Row="0"
             HorizontalOptions="Fill" 
             VerticalOptions="Fill"
             HeightRequest="135">
@@ -21,13 +21,40 @@
                 VerticalOptions="FillAndExpand"
                 Source="background.png"/>
 
-            <Label FontSize="30"
+            <Label FontSize="20"
                    HorizontalOptions="Center"
                    Margin="20,40"
                    Text="FOREIGN EXCHANGE"
                    TextColor="White"
                    VerticalOptions="Start"/>
-          
+
+            <StackLayout VerticalOptions="Center">
+                
+                <Entry BackgroundColor="Transparent"
+                       FontAttributes="Bold"
+                       FontSize="40"
+                       HorizontalOptions="Center"
+                       Keyboard="Numeric"
+                       MaxLength="7"
+                       Text="200"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       WidthRequest="100"/>
+
+                <BoxView Color="White" 
+                         HeightRequest="1" 
+                         HorizontalOptions="Center"
+                         Margin="0,10"
+                         WidthRequest="200"/>
+
+            </StackLayout>
         </Grid>
+
+        <StackLayout Grid.Row="1" 
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+
+            <Label Text="dadada"/>
+        </StackLayout>
     </Grid>
 </ContentPage>
