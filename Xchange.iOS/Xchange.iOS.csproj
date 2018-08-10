@@ -156,4 +156,9 @@
       <Name>Xchange</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background.png" />
+    <BundleResource Include="Resources\background%402x.png" />
+    <BundleResource Include="Resources\background%403x.png" />
+  </ItemGroup>
 </Project>
