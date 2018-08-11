@@ -15,6 +15,7 @@
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Controls\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />
