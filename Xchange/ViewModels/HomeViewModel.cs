@@ -1,25 +1,59 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using Xchange.Models;
 
 namespace Xchange.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private string email;
-        public string Email
+        #region Properties
+        private string result;
+        public string Result
         {
-            get { return email; }
-            set { SetValue(ref email, value); }
+            get { return result; }
+            set { SetValue(ref result, value); }
         }
 
-        public RelayCommand CalculateCommand { get; set; }
-        void Calculate()
+        private double amount;
+        public double Amount
+        {
+            get { return amount; }
+            set { SetValue(ref amount, value); }
+        }
+
+        private ObservableCollection<Rate> rates;
+        public ObservableCollection<Rate> Rates
+        {
+            get { return rates; }
+            set { SetValue(ref rates, value); }
+        }
+
+        private Rate sourceRate;
+        public Rate SourceRate
+        {
+            get { return sourceRate; }
+            set { SetValue(ref sourceRate, value); }
+        }
+
+        private Rate targetRate;
+        public Rate TargetRate
+        {
+            get { return targetRate; }
+            set { SetValue(ref targetRate, value); }
+        }
+        #endregion
+
+        #region Commands
+        public RelayCommand ConvertCommand { get; }
+        void Convert()
         {
             
         }
 
-        async System.Threading.Tasks.Task LoadRatesAsync()
+        async Task LoadRatesAsync()
         {
             var client = new HttpClient();
             client.BaseAddress = new Uri("http://api.openweathermap.org");
@@ -31,10 +65,11 @@ namespace Xchange.ViewModels
                 var results = await response.Content.ReadAsStringAsync();
             } 
         }
+        #endregion
 
         public HomeViewModel()
         {
-            CalculateCommand = new RelayCommand(Calculate);
+            ConvertCommand = new RelayCommand(Convert);
         }
     }
 }

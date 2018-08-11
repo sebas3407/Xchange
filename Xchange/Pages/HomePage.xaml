@@ -38,7 +38,7 @@
                        HorizontalTextAlignment="Center"
                        Keyboard="Numeric"
                        MaxLength="7"
-                       Text="200"
+                       Text="{Binding Amount, Mode=TwoWay}"
                        TextColor="White"
                        VerticalOptions="Center"
                        WidthRequest="300"/>
@@ -59,7 +59,13 @@
 
                     <Picker BackgroundColor="Transparent"
                             HorizontalOptions="Center"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Rates}"
+                            SelectedItem="{Binding SourceRate}"
                             VerticalOptions="Center"/>
+
+                    <Button Command="{Binding ConvertCommand}"
+                            TextColor="White"/>
 
                 </StackLayout>
             </StackLayout>
@@ -71,15 +77,12 @@
 
             <StackLayout VerticalOptions="Center">
 
-                <Controls:BorderlessEntry BackgroundColor="Transparent"
+                <Label BackgroundColor="Transparent"
                        FontAttributes="Bold"
                        FontSize="40"
                        HorizontalOptions="Center"
                        HorizontalTextAlignment="Center"
-                                          InputTransparent="true"
-                       Keyboard="Numeric"
-                       MaxLength="7"
-                       Text="200"
+                       Text="{Binding Result,Mode=TwoWay}"
                        TextColor="#A3285A"
                        VerticalOptions="Center"
                        WidthRequest="300"/>
@@ -99,6 +102,9 @@
                            VerticalOptions="Center"/>
 
                     <Picker HorizontalOptions="Center"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Rates}"
+                            SelectedItem="{Binding TargetRate}"
                             TextColor="#A3285A"
                             VerticalOptions="Center"/>
 
