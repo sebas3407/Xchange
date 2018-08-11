@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using Xchange.Models;
 
 namespace Xchange.ViewModels
@@ -24,12 +27,7 @@ namespace Xchange.ViewModels
             set { SetValue(ref amount, value); }
         }
 
-        private ObservableCollection<Rate> rates;
-        public ObservableCollection<Rate> Rates
-        {
-            get { return rates; }
-            set { SetValue(ref rates, value); }
-        }
+        public ObservableCollection<Rate> Rates { get; set; }
 
         private Rate sourceRate;
         public Rate SourceRate
@@ -50,26 +48,35 @@ namespace Xchange.ViewModels
         public RelayCommand ConvertCommand { get; }
         void Convert()
         {
-            
         }
 
-        async Task LoadRatesAsync()
+        async void LoadRates()
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("http://api.openweathermap.org");
-            var url = "/api/latest.json?";
-
-            var response = await client.GetAsync(url);
-            if(response.IsSuccessStatusCode)
+            try
             {
-                var results = await response.Content.ReadAsStringAsync();
-            } 
+                var client = new HttpClient();
+                client.BaseAddress = new Uri("http://apiexchangerates.azurewebsites.net");
+                var controller = "/api/Rates";
+
+                var response = await client.GetAsync(controller);
+                if(response.IsSuccessStatusCode)
+                {
+                    var results = await response.Content.ReadAsStringAsync();
+                    var rates = JsonConvert.DeserializeObject<List<Rate>>(Result);
+                    Rates = new ObservableCollection<Rate>(rates);
+                } 
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
         #endregion
 
         public HomeViewModel()
         {
             ConvertCommand = new RelayCommand(Convert);
+            LoadRates();
         }
     }
 }
