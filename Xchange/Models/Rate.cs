@@ -1,18 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Xchange.Models
 {
     public class Rate
     {
-        public int RateId { get; set; }
+        public string currencyName { get; set; }
+        public string currencySymbol { get; set; }
+        public string id { get; set; }
+    }
 
-        public string Code { get; set; }
-
-        public double TaxRate { get; set; }
-
-        public string Name { get; set; }   
-
-        public Rate()
-        {
-        }
+    public class RootObject
+    {
+        public List<Rate> Rate { get; set; }
     }
 }

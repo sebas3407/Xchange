@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
@@ -27,7 +28,14 @@ namespace Xchange.ViewModels
             set { SetValue(ref amount, value); }
         }
 
-        public ObservableCollection<Rate> Rates { get; set; }
+        public ObservableCollection<Rate> RatesList;
+
+        private Rate rates;
+        public Rate Rates
+        {
+            get { return rates; }
+            set { SetValue(ref rates, value); }
+        }
 
         private Rate sourceRate;
         public Rate SourceRate
@@ -42,12 +50,34 @@ namespace Xchange.ViewModels
             get { return targetRate; }
             set { SetValue(ref targetRate, value); }
         }
+
+
         #endregion
 
         #region Commands
         public RelayCommand ConvertCommand { get; }
-        void Convert()
+        async void Convert()
         {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri("https://free.currencyconverterapi.com");
+                var controller = "/api/v6/convert?q=" + SourceRate.id + "_"+  TargetRate.id + "&compact=ultra";
+
+                var response = await client.GetAsync(controller);
+                if (response.IsSuccessStatusCode)
+                {
+                    var results = await response.Content.ReadAsStringAsync();
+                    String[] parts = results.Split(':');
+                    parts[1] = parts[1].Remove(parts[1].Length - 1);
+                    Result = parts[1];
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         async void LoadRates()
@@ -55,22 +85,24 @@ namespace Xchange.ViewModels
             try
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri("http://apiexchangerates.azurewebsites.net");
-                var controller = "/api/Rates";
+                client.BaseAddress = new Uri("https://sebasapi.000webhostapp.com");
+                var controller = "/exchange/ratestest.json";
 
                 var response = await client.GetAsync(controller);
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     var results = await response.Content.ReadAsStringAsync();
-                    var rates = JsonConvert.DeserializeObject<List<Rate>>(Result);
-                    Rates = new ObservableCollection<Rate>(rates);
-                } 
+                    var list = JsonConvert.DeserializeObject<RootObject>(results);
+                    RatesList = new ObservableCollection<Rate>(list.Rate);
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
         }
+
+
         #endregion
 
         public HomeViewModel()
