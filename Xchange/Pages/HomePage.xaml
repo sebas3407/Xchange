@@ -59,13 +59,10 @@
 
                     <Picker BackgroundColor="Transparent"
                             HorizontalOptions="Center"
-                            ItemDisplayBinding="{Binding currencyName}"
+                            ItemDisplayBinding="{Binding currencySymbol}"
                             ItemsSource="{Binding RatesList}"
                             SelectedItem="{Binding SourceRate}"
                             VerticalOptions="Center"/>
-
-                    <Button Command="{Binding ConvertCommand}"
-                            TextColor="White"/>
 
                 </StackLayout>
             </StackLayout>
@@ -102,7 +99,7 @@
                            VerticalOptions="Center"/>
 
                     <Picker HorizontalOptions="Center"
-                            ItemDisplayBinding="{Binding currencyName}"
+                            ItemDisplayBinding="{Binding currencySymbol}"
                             ItemsSource="{Binding RatesList}"
                             SelectedItem="{Binding TargetRate}"
                             TextColor="#A3285A"

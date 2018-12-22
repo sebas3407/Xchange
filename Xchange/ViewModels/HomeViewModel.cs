@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Reflection;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Xchange.Models;
+using Xchange.Net;
 
 namespace Xchange.ViewModels
 {
@@ -55,14 +53,20 @@ namespace Xchange.ViewModels
             get { return targetRate; }
             set { SetValue(ref targetRate, value); }
         }
+
+        public InternetConnection internetConnection;
         #endregion
 
         #region Commands
         public RelayCommand ConvertCommand { get; }
-        async void Convert()
+        private async void Convert()
         {
+            if (Amount <= 0)
+            {
+               await App.Current.MainPage.DisplayAlert("Error", "Please introduce a valid number", "Ok");
+               return;
+            }
 
-            var a = Amount;
             try
             {
                 var client = new HttpClient();
@@ -77,7 +81,6 @@ namespace Xchange.ViewModels
                     parts[1] = parts[1].Remove(parts[1].Length - 1);
                     Result = parts[1];
                     Result = Amount * Double.Parse(Result) + "";
-
                 }
             }
             catch (Exception ex)
@@ -86,15 +89,23 @@ namespace Xchange.ViewModels
             }
         }
 
-        async void LoadRates()
+        private async void LoadRates()
         {
+            internetConnection = new InternetConnection();
+            var isConnection = await internetConnection.CheckConnection();
+
+            if (!isConnection.IsSuccess)
+            {
+                return;
+            }
+
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri("https://sebasapi.000webhostapp.com");
                 var controller = "/exchange/ratestest.json";
 
-                var response = await client.GetAsync(controller);
+                HttpResponseMessage response = await client.GetAsync(controller);
                 if (response.IsSuccessStatusCode)
                 {
                     var results = await response.Content.ReadAsStringAsync();
@@ -107,14 +118,14 @@ namespace Xchange.ViewModels
                 Debug.WriteLine(ex.Message);
             }
         }
-
-
         #endregion
 
+        #region Constructor
         public HomeViewModel()
         {
             ConvertCommand = new RelayCommand(Convert);
             LoadRates();
         }
+        #endregion
     }
 }
