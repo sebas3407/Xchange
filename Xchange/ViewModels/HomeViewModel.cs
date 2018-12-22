@@ -28,7 +28,12 @@ namespace Xchange.ViewModels
             set { SetValue(ref amount, value); }
         }
 
-        public ObservableCollection<Rate> RatesList;
+        public ObservableCollection<Rate> ratesList;
+        public ObservableCollection<Rate> RatesList
+        {
+            get { return ratesList; }
+            set { SetValue(ref ratesList, value); }
+        }
 
         private Rate rates;
         public Rate Rates
@@ -50,14 +55,14 @@ namespace Xchange.ViewModels
             get { return targetRate; }
             set { SetValue(ref targetRate, value); }
         }
-
-
         #endregion
 
         #region Commands
         public RelayCommand ConvertCommand { get; }
         async void Convert()
         {
+
+            var a = Amount;
             try
             {
                 var client = new HttpClient();
@@ -71,6 +76,7 @@ namespace Xchange.ViewModels
                     String[] parts = results.Split(':');
                     parts[1] = parts[1].Remove(parts[1].Length - 1);
                     Result = parts[1];
+                    Result = Amount * Double.Parse(Result) + "";
 
                 }
             }
