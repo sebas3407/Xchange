@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 using Xchange.Controls;
 using Xchange.iOS;
 
-[assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
+[assembly: ExportRenderer(typeof(BorderlessPicker), typeof(BorderlessPickerRenderer))]
 namespace Xchange.iOS
 {
-    public class BorderlessEntryRenderer : Xamarin.Forms.Platform.iOS.EntryRenderer
+    public class BorderlessPickerRenderer : PickerRenderer
     {
         public static void Init() { }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -105,7 +105,7 @@ namespace Xchange.ViewModels
                 client.BaseAddress = new Uri("https://sebasapi.000webhostapp.com");
                 var controller = "/exchange/ratestest.json";
 
-                HttpResponseMessage response = await client.GetAsync(controller);
+                var response = await client.GetAsync(controller);
                 if (response.IsSuccessStatusCode)
                 {
                     var results = await response.Content.ReadAsStringAsync();

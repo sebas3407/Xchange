@@ -68,6 +68,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BorderlessEntryRenderer.cs" />
+    <Compile Include="BorderlessPickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -91,6 +92,10 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\background.png" />
+    <AndroidResource Include="Resources\drawable\convert.png" />
+    <AndroidResource Include="Resources\drawable\convert_red.png" />
+    <AndroidResource Include="Resources\drawable\foreign_exchange.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

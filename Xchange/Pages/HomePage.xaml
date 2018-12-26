@@ -57,11 +57,12 @@
                            HorizontalOptions="Center" 
                            VerticalOptions="Center"/>
 
-                    <Picker BackgroundColor="Transparent"
+                    <Controls:BorderlessPicker BackgroundColor="Transparent"
                             HorizontalOptions="Center"
-                            ItemDisplayBinding="{Binding currencySymbol}"
+                            ItemDisplayBinding="{Binding currencyName}"
                             ItemsSource="{Binding RatesList}"
                             SelectedItem="{Binding SourceRate}"
+                            SelectedIndex="0"
                             VerticalOptions="Center"/>
 
                 </StackLayout>
@@ -98,10 +99,11 @@
                            HorizontalOptions="Center" 
                            VerticalOptions="Center"/>
 
-                    <Picker HorizontalOptions="Center"
-                            ItemDisplayBinding="{Binding currencySymbol}"
+                    <Controls:BorderlessPicker HorizontalOptions="Center"
+                            ItemDisplayBinding="{Binding currencyName}"
                             ItemsSource="{Binding RatesList}"
                             SelectedItem="{Binding TargetRate}"
+                            SelectedIndex="0"
                             TextColor="#A3285A"
                             VerticalOptions="Center"/>
                     
