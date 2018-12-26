@@ -63,6 +63,7 @@
                             ItemsSource="{Binding RatesList}"
                             SelectedItem="{Binding SourceRate}"
                             SelectedIndex="0"
+                            TextColor="White"
                             VerticalOptions="Center"/>
 
                 </StackLayout>

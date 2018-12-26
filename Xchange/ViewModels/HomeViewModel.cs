@@ -103,7 +103,7 @@ namespace Xchange.ViewModels
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri("https://sebasapi.000webhostapp.com");
-                var controller = "/exchange/ratestest.json";
+                var controller = "/exchange/rates.json";
 
                 var response = await client.GetAsync(controller);
                 if (response.IsSuccessStatusCode)
