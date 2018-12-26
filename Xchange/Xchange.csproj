@@ -9,6 +9,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
     <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="4.0.0.190-beta" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
