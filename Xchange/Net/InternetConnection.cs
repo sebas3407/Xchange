@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Plugin.Connectivity;
 
 namespace Xchange.Net
 {
@@ -7,14 +7,14 @@ namespace Xchange.Net
     {
         public async Task<Response> CheckConnection()
         {
-            //if (!CrossConnectivity.Current.IsConnected)
-            //{
-            //    return new Response
-            //    {
-            //        IsSuccess = false,
-            //        Message = "Please turn on your internet settings.",
-            //    };
-            //}
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Please turn on your internet settings.",
+                };
+            }
 
             //var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
             //    "google.com");

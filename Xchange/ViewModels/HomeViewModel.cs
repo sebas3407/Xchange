@@ -23,7 +23,13 @@ namespace Xchange.ViewModels
         public double Amount
         {
             get { return amount; }
-            set { SetValue(ref amount, value); }
+            set {
+            
+                if (amount != value)
+                {
+                    Convert(value);
+                }
+                SetValue(ref amount, value); }
         }
 
         public ObservableCollection<Rate> ratesList;
@@ -53,13 +59,12 @@ namespace Xchange.ViewModels
             get { return targetRate; }
             set { SetValue(ref targetRate, value); }
         }
-
         public InternetConnection internetConnection;
         #endregion
 
         #region Commands
         public RelayCommand ConvertCommand { get; }
-        private async void Convert()
+        private async void Convert(Double value)
         {
             internetConnection = new InternetConnection();
             var isConnection = await internetConnection.CheckConnection();
@@ -69,7 +74,7 @@ namespace Xchange.ViewModels
                 return;
             }
 
-            if (Amount <= 0)
+            if (value <= 0)
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Please introduce a valid number", "Ok");
                 return;
@@ -87,10 +92,9 @@ namespace Xchange.ViewModels
                     var results = await response.Content.ReadAsStringAsync();
                     String[] parts = results.Split(':');
                     parts[1] = parts[1].Remove(parts[1].Length - 1);
-                    Result =  Double.Parse(parts[1]);
-                    Result = Amount * Result;
+                    Result = Double.Parse(parts[1]);
+                    Result = value * Result;
                     Result = Math.Round(Result, 2);
-
                 }
             }
             catch (Exception ex)
@@ -133,7 +137,7 @@ namespace Xchange.ViewModels
         #region Constructor
         public HomeViewModel()
         {
-            ConvertCommand = new RelayCommand(Convert);
+           // ConvertCommand = new RelayCommand(Convert);
             LoadRates();
         }
         #endregion
