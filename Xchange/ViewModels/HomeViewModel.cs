@@ -61,6 +61,14 @@ namespace Xchange.ViewModels
         public RelayCommand ConvertCommand { get; }
         private async void Convert()
         {
+            internetConnection = new InternetConnection();
+            var isConnection = await internetConnection.CheckConnection();
+
+            if (!isConnection.IsSuccess)
+            {
+                return;
+            }
+
             if (Amount <= 0)
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Please introduce a valid number", "Ok");
