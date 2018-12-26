@@ -12,8 +12,8 @@ namespace Xchange.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         #region Properties
-        private string result;
-        public string Result
+        private Double result;
+        public Double Result
         {
             get { return result; }
             set { SetValue(ref result, value); }
@@ -63,8 +63,8 @@ namespace Xchange.ViewModels
         {
             if (Amount <= 0)
             {
-               await App.Current.MainPage.DisplayAlert("Error", "Please introduce a valid number", "Ok");
-               return;
+                await App.Current.MainPage.DisplayAlert("Error", "Please introduce a valid number", "Ok");
+                return;
             }
 
             try
@@ -79,8 +79,10 @@ namespace Xchange.ViewModels
                     var results = await response.Content.ReadAsStringAsync();
                     String[] parts = results.Split(':');
                     parts[1] = parts[1].Remove(parts[1].Length - 1);
-                    Result = parts[1];
-                    Result = Amount * Double.Parse(Result) + "";
+                    Result =  Double.Parse(parts[1]);
+                    Result = Amount * Result;
+                    Result = Math.Round(Result, 2);
+
                 }
             }
             catch (Exception ex)
