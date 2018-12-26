@@ -61,8 +61,9 @@
                             HorizontalOptions="Center"
                             ItemDisplayBinding="{Binding currencyName}"
                             ItemsSource="{Binding RatesList}"
+                            SelectedIndexChanged="Handle_SelectedIndexChanged"
                             SelectedItem="{Binding SourceRate}"
-                            SelectedIndex="0"
+                            SelectedIndex="1"
                             TextColor="White"
                             VerticalOptions="Center"/>
 
@@ -103,16 +104,12 @@
                     <Controls:BorderlessPicker HorizontalOptions="Center"
                             ItemDisplayBinding="{Binding currencyName}"
                             ItemsSource="{Binding RatesList}"
+                            SelectedIndexChanged="Handle_SelectedIndexChanged"
                             SelectedItem="{Binding TargetRate}"
-                            SelectedIndex="0"
+                            SelectedIndex="1"
                             TextColor="#A3285A"
                             VerticalOptions="Center"/>
-                    
-                    <Button Text="go"
-                            Command="{Binding ConvertCommand}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"/>
-
+                
                 </StackLayout>
             </StackLayout>
         </StackLayout>

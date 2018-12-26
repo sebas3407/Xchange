@@ -64,7 +64,7 @@ namespace Xchange.ViewModels
 
         #region Commands
         public RelayCommand ConvertCommand { get; }
-        private async void Convert(Double value)
+        public async void Convert(Double value)
         {
             internetConnection = new InternetConnection();
             var isConnection = await internetConnection.CheckConnection();

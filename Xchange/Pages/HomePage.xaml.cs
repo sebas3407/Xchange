@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-
+using Xchange.ViewModels;
 using Xamarin.Forms;
 
 namespace Xchange.Pages
@@ -10,6 +9,15 @@ namespace Xchange.Pages
         public HomePage()
         {
             InitializeComponent();
+        }
+
+        void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            var amount = MainViewModel.GetInstance().Home.Amount;
+            if (amount > 0)
+            {
+                MainViewModel.GetInstance().Home.Convert(amount);
+            }
         }
     }
 }
