@@ -24,8 +24,16 @@ namespace Xchange.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            
+            UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+            if (statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
+            {
+                statusBar.BackgroundColor = UIColor.FromRGB(220, 87, 131);
+                statusBar.TintColor = UIColor.White;
+            }
 
             return base.FinishedLaunching(app, options);
+
         }
     }
 }
