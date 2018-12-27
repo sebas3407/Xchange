@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Controls="clr-namespace:Xchange.Controls"  
     xmlns:local="clr-namespace:Xchange"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
     x:Class="Xchange.Pages.HomePage"
     BindingContext="{Binding Main.Home, Source={StaticResource Locator}}">
     
