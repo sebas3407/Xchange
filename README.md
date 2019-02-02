@@ -10,5 +10,5 @@ Xchange is an simple app that allows you to convert any value in the exchange ra
 
 ### Credits
 
-- Design: https://davidespier.com
+- Design: http://davidespier.com
 
