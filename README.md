@@ -4,11 +4,16 @@
 
 Xchange is an simple app that allows you to convert any value in the exchange rate you need
 
+### Instructions
+
+- Select origin rate
+- Select destination
+
 ###  Main page 
 
 ![xchange iOS](https://i.ibb.co/71zMrbb/xchange-50.png)
 
 ### Credits
 
-- Design: http://davidespier.com
-
+- **Developer**: Sebastian Ortiz Velez
+- **Designer**: http://davidespier.com
