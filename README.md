@@ -7,7 +7,7 @@ Xchange is an simple app that allows you to convert any value in the exchange ra
 ### Instructions
 
 - Select origin rate
-- Select destination
+- Select destination rate
 
 ###  Main page 
 
@@ -15,5 +15,5 @@ Xchange is an simple app that allows you to convert any value in the exchange ra
 
 ### Credits
 
-- **Developer**: Sebastian Ortiz Velez
-- **Designer**: http://davidespier.com
+- **Developer**: Sebastian Ortiz Velez http://sebastianortiz.tk
+- **Designer**: David espier: http://davidespier.com
