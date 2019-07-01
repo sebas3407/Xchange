@@ -9,11 +9,11 @@ Xchange is an simple app that allows you to convert any value in the exchange ra
 - Select origin rate
 - Select destination rate
 
-###  Main page 
+## Screenshots 
 
 ![xchange iOS](https://i.ibb.co/71zMrbb/xchange-50.png)
 
 ### Credits
 
-- **Developer**: Sebastian Ortiz Velez http://sebastianortiz.tk
-- **Designer**: David espier: http://davidespier.com
+- **Sebastian Ortiz Velez** - *Developer* http://sebastianortiz.tk
+- **David Espier Corbacho** - *Designer* http://davidespier.com
