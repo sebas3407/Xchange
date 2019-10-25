@@ -15,5 +15,5 @@ Xchange is an simple app that allows you to convert any value in the exchange ra
 
 ### Credits
 
-- **Sebastian Ortiz Velez** - *Developer* http://sebastianortiz.tk
+- **Sebastian Ortiz Velez** - *Developer*
 - **David Espier Corbacho** - *Designer* http://davidespier.com
